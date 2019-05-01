@@ -1,3 +1,6 @@
 .vagrant
 inspec.lock
 !.gitkeep
+
+# Ignore backup files
+*.yml.*
