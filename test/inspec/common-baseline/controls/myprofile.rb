@@ -9,7 +9,7 @@ control 'myprofile-01' do
   desc 'Check contents'
   describe file('/var/tmp/myprofile.txt') do
     it { should be_file }
-    its('content') { should match /^My name is / }
-    its('content') { should match /^I'm in / }
+    its('content') { should match /^My name is #{attribute('my_name')}/ }
+    its('content') { should match /^I'm in #{attribute('my_group')}/ }
   end
 end
