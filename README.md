@@ -5,6 +5,7 @@
 - Vagrant: 2.2.4
 - Vagrant box: [centos/7](https://app.vagrantup.com/centos/boxes/7)
 - Ansible: 2.7.10
+- InSpec: 4.3.2
 
 ## Usage
 
@@ -23,6 +24,12 @@ Host 192.168.33.*
     UserKnownHostsFile      /dev/null
     IdentitiesOnly          yes
     IdentityFile            .vagrant/machines/default/virtualbox/private_key
+```
+
+Run inspec exec (This check is failed).
+
+```
+inspec exec test/inspec/common-baseline -t ssh://vagrant@192.168.33.10
 ```
 
 Run ansible-playbook.
