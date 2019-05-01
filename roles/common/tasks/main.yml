@@ -1,0 +1,8 @@
+---
+- name: "Deploy my profile"
+  template:
+    src: myprofile.txt.j2
+    dest: /var/tmp/myprofile.txt
+    mode: 0644
+    owner: root
+    group: root
