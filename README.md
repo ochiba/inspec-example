@@ -29,7 +29,7 @@ Host 192.168.33.*
 Run inspec exec (This check is failed).
 
 ```
-inspec exec test/inspec/common-baseline -t ssh://vagrant@192.168.33.10
+inspec exec test/inspec/common-baseline --target=ssh://vagrant@192.168.33.10 --input-file=test/inspec/attributes/192.168.33.10.yml
 ```
 
 Run ansible-playbook.
@@ -37,5 +37,11 @@ Run ansible-playbook.
 ```
 ansible-playbook plays/web.yml -i inventories/stg/nodes.yml --diff --check
 ansible-playbook plays/web.yml -i inventories/stg/nodes.yml --diff
+```
+
+Run inspec exec (This check will succeed).
+
+```
+inspec exec test/inspec/common-baseline --target=ssh://vagrant@192.168.33.10 --input-file=test/inspec/attributes/192.168.33.10.yml
 ```
 
