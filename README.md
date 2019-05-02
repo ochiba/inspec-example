@@ -32,15 +32,15 @@ Host 192.168.33.*
 Make attributes file with ansible-inventory
 
 ```
-ansible-inventory -i inventories/stg/nodes.yml --yaml --host=192.168.33.10 > test/inspec/attributes/192.168.33.10.yml 
-ansible-inventory -i inventories/stg/nodes.yml --yaml --host=192.168.33.20 > test/inspec/attributes/192.168.33.20.yml 
+ansible-inventory -i inventories/stg/nodes.yml --yaml --host=192.168.33.10 > test/attributes/192.168.33.10.yml 
+ansible-inventory -i inventories/stg/nodes.yml --yaml --host=192.168.33.20 > test/attributes/192.168.33.20.yml 
 ```
 
 Run inspec exec (This check is failed).
 
 ```
-inspec exec test/inspec/common-baseline --target=ssh://vagrant@192.168.33.10 --input-file=test/inspec/attributes/192.168.33.10.yml
-inspec exec test/inspec/common-baseline --target=ssh://vagrant@192.168.33.20 --input-file=test/inspec/attributes/192.168.33.20.yml
+inspec exec roles/common/test/integration/default --target=ssh://vagrant@192.168.33.10 --input-file=test/attributes/192.168.33.10.yml
+inspec exec roles/common/test/integration/default --target=ssh://vagrant@192.168.33.20 --input-file=test/attributes/192.168.33.20.yml
 ```
 
 Run ansible-playbook.
@@ -56,7 +56,7 @@ ansible-playbook plays/app.yml -i inventories/stg/nodes.yml --diff
 Run inspec exec (This check will succeed).
 
 ```
-inspec exec test/inspec/common-baseline --target=ssh://vagrant@192.168.33.10 --input-file=test/inspec/attributes/192.168.33.10.yml
-inspec exec test/inspec/common-baseline --target=ssh://vagrant@192.168.33.20 --input-file=test/inspec/attributes/192.168.33.20.yml
+inspec exec roles/common/test/integration/default --target=ssh://vagrant@192.168.33.10 --input-file=test/attributes/192.168.33.10.yml
+inspec exec roles/common/test/integration/default --target=ssh://vagrant@192.168.33.20 --input-file=test/attributes/192.168.33.20.yml
 ```
 
