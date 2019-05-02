@@ -5,7 +5,7 @@
 PROGNAME=$(basename $0)
 BASE_DIR=$(cd $(dirname $0)/..; pwd)
 INVENTORY=${BASE_DIR}/inventories/stg/nodes.yml
-INSPEC_DIR=${BASE_DIR}/test/inspec
+TEST_DIR=${BASE_DIR}/test
 INSPEC_REMOTE_HOST='127.0.0.1'
 INSPEC_REMOTE_USER='vagrant'
 INSPEC_ATTRS_FILE=''
@@ -89,7 +89,7 @@ INSPEC_TARGET="ssh://${INSPEC_REMOTE_USER}@${INSPEC_REMOTE_HOST}"
 
 # Make attributes file with ansible-inventory
 if [[ -z "${INSPEC_ATTRS_FILE}" ]] ; then
-    INSPEC_ATTRS_FILE=${INSPEC_DIR}/attributes/${INSPEC_REMOTE_HOST}.yml
+    INSPEC_ATTRS_FILE=${TEST_DIR}/attributes/${INSPEC_REMOTE_HOST}.yml
     if [[ -f "${INSPEC_ATTRS_FILE}" ]] ; then
         # Backup old attributes file
         INSPEC_ATTRS_FILE_OLD="${INSPEC_ATTRS_FILE}.$(date '+%Y%m%d-%H%M%S')"
